@@ -60,7 +60,7 @@ export class Modal extends React.Component {
 
   render() {
     const { toggle } = this.state;
-    const { content, children } = this.props;
+    const { content, children, clickOutside } = this.props;
     const modalButton = () => {
       if (!children || (typeof children.type === 'symbol' && !children.props.children)) {
         return <Modal.Button onClick={this.openModalHandler} />;
@@ -72,7 +72,10 @@ export class Modal extends React.Component {
       <>
         {modalButton()}
         {toggle && (
-          <ModalPortal setToggle={(value) => this.setState({ toggle: value })}>
+          <ModalPortal
+            clickOutside={clickOutside}
+            setToggle={(value) => this.setState({ toggle: value })}
+          >
             {content}
           </ModalPortal>
         )}
@@ -86,6 +89,7 @@ Modal.propTypes = {
   content: PropTypes.func,
   children: PropTypes.element,
   disabled: PropTypes.bool,
+  clickOutside: PropTypes.bool,
 };
 
 Modal.defaultProps = {
@@ -93,4 +97,5 @@ Modal.defaultProps = {
   content: ({ closeHandler }) => <div onClick={closeHandler}>Default modal container</div>,
   children: undefined,
   disabled: false,
+  clickOutside: false,
 };

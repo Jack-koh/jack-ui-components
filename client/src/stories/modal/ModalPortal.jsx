@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { createPortal } from 'react-dom';
 
 // Content ###############################################
-const Content = ({ content, setToggle }) => {
+const Content = ({ clickOutside, content, setToggle }) => {
   const CONTENT = content({ closeHandler: () => setToggle(false) });
   const PEELED_CONTENT = (() =>
     typeof CONTENT.type === 'function' ? CONTENT.type(CONTENT.props) : CONTENT)();
@@ -17,12 +17,17 @@ const Content = ({ content, setToggle }) => {
   return (
     <>
       {CONTENT_ELEMENT}
-      <div className="modal__background__screen" />
+      <div
+        className="modal__background__screen"
+        onClick={() => {
+          if (clickOutside) setToggle(false);
+        }}
+      />
     </>
   );
 };
 
-export const ModalPortal = ({ children, setToggle }) => {
+export const ModalPortal = ({ children, setToggle, clickOutside }) => {
   const modalRoot = useMemo(() => document.createElement('div'), []);
   const root = document.getElementById('root');
 
@@ -34,5 +39,8 @@ export const ModalPortal = ({ children, setToggle }) => {
     };
   }, []);
 
-  return createPortal(<Content content={children} setToggle={setToggle} />, modalRoot);
+  return createPortal(
+    <Content clickOutside={clickOutside} content={children} setToggle={setToggle} />,
+    modalRoot
+  );
 };

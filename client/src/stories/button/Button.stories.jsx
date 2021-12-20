@@ -12,6 +12,11 @@ import {
 import { action } from '@storybook/addon-actions';
 import { Button } from './Button';
 
+export default {
+  title: 'Example/Button',
+  component: Button,
+};
+
 const args = {
   loading: false,
   disabled: false,
@@ -20,7 +25,8 @@ const args = {
   onClick: action('클릭', '클릭'),
 };
 
-export const Basic = (args) => <Button {...args} />;
+const Template = (args) => <Button {...args} />;
+export const Basic = Template.bind({});
 Basic.parameters = {
   docs: {
     page: () => (
@@ -36,7 +42,7 @@ Basic.parameters = {
 };
 Basic.args = { ...args, title: 'Button' };
 
-export const Custom = (args) => <Button {...args} />;
+export const Custom = Template.bind({});
 Custom.args = {
   ...args,
   title: '',
@@ -60,9 +66,4 @@ Custom.parameters = {
       </>
     ),
   },
-};
-
-export default {
-  title: 'Example/Button',
-  component: Button,
 };
