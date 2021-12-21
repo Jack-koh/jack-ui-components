@@ -1,9 +1,9 @@
-import React from 'react';
-import classNames from 'classnames';
-import { ModalPortal } from './ModalPortal';
-import * as Comp from './composition/Layout';
-import PropTypes from 'prop-types';
-import './Modal.scss';
+import React from "react";
+import classNames from "classnames";
+import { ModalPortal } from "./ModalPortal";
+import * as Comp from "./composition/Layout";
+import PropTypes from "prop-types";
+import "./Modal.scss";
 
 // Modal ####################################################
 export class Modal extends React.Component {
@@ -22,13 +22,13 @@ export class Modal extends React.Component {
     const { toggle } = this.state;
     if (escape) {
       toggle
-        ? document.addEventListener('keyup', this.escapeHandler)
-        : document.removeEventListener('keyup', this.escapeHandler);
+        ? document.addEventListener("keyup", this.escapeHandler)
+        : document.removeEventListener("keyup", this.escapeHandler);
     }
   }
 
   escapeHandler = (e) => {
-    if (e.key === 'Escape') this.setState({ toggle: false });
+    if (e.key === "Escape") this.setState({ toggle: false });
   };
 
   openModalHandler = (e) => {
@@ -42,13 +42,15 @@ export class Modal extends React.Component {
   getCloneChild = () => {
     const { children } = this.props;
     const getChild = () =>
-      typeof children.type === 'function' ? children.type(children.props) : children;
+      typeof children.type === "function"
+        ? children.type(children.props)
+        : children;
 
     const CHILDREN = getChild();
     const CLONED_CHILDREN = React.Children.map(CHILDREN, (child) => {
       const { className, onClick } = child.props;
       return React.cloneElement(child, {
-        className: classNames('modal__target', { [className]: className }),
+        className: classNames("modal__target", { [className]: className }),
         onClick: (e) => {
           this.openModalHandler(e);
           if (onClick) onClick();
@@ -62,11 +64,11 @@ export class Modal extends React.Component {
     const { toggle } = this.state;
     const { content, children, clickOutside } = this.props;
     const modalButton = () => {
-      if (!children || (typeof children.type === 'symbol' && !children.props.children)) {
-        return <Modal.Button onClick={this.openModalHandler} />;
-      }
+      if (!children) return <Modal.Button onClick={this.openModalHandler} />;
       return this.getCloneChild();
     };
+
+    console.log(this.state);
 
     return (
       <>
@@ -94,8 +96,10 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
   escape: false,
-  content: ({ closeHandler }) => <div onClick={closeHandler}>Default modal container</div>,
   children: undefined,
   disabled: false,
   clickOutside: false,
+  content: ({ closeHandler }) => (
+    <div onClick={closeHandler}>Default modal container</div>
+  ),
 };

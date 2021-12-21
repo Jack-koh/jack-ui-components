@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Title,
   Subtitle,
@@ -7,22 +7,21 @@ import {
   ArgsTable,
   // Stories,
   PRIMARY_STORY,
-  CURRENT_SELECTION,
-} from '@storybook/addon-docs';
-import { action } from '@storybook/addon-actions';
-import { Button } from './Button';
+} from "@storybook/addon-docs";
+import { action } from "@storybook/addon-actions";
+import { Button } from "./Button";
 
 export default {
-  title: 'Example/Button',
+  title: "Design System/Button",
   component: Button,
 };
 
 const args = {
   loading: false,
   disabled: false,
-  type: 'button',
-  className: 'example-class',
-  onClick: action('클릭', '클릭'),
+  type: "button",
+  className: "example-class",
+  onClick: action("onClick", "onClick"),
 };
 
 const Template = (args) => <Button {...args} />;
@@ -31,7 +30,7 @@ Basic.parameters = {
   docs: {
     page: () => (
       <>
-        <Title>Basic</Title>
+        <Title>Basic Button</Title>
         <Subtitle></Subtitle>
         <Description></Description>
         <Primary name="Basic" />
@@ -40,29 +39,29 @@ Basic.parameters = {
     ),
   },
 };
-Basic.args = { ...args, title: 'Button' };
+Basic.args = { ...args, title: "Button" };
 
 export const Custom = Template.bind({});
 Custom.args = {
   ...args,
-  title: '',
+  title: "",
   children: <div>Custom Button</div>,
   styles: {
     width: 120,
     fontSize: 12,
     radius: 18,
-    backgroundColor: '#1ea7fd',
+    backgroundColor: "#1ea7fd",
   },
 };
 Custom.parameters = {
   docs: {
     page: () => (
       <>
-        <Title>Custom</Title>
+        <Title>Custom Button</Title>
         <Subtitle></Subtitle>
         <Description></Description>
         <Primary name="Custom" />
-        <ArgsTable story={CURRENT_SELECTION} />
+        <ArgsTable story={PRIMARY_STORY} />
       </>
     ),
   },

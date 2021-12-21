@@ -1,29 +1,18 @@
-import React from 'react';
+import React from "react";
 import {
   Title,
   Subtitle,
   Description,
   Primary,
   ArgsTable,
-  Source,
-  Anchor,
-  Canvas,
-  DocsContext,
-  DocsPage,
-  DocsContainer,
-  DocsStory,
-  Heading,
-  Props,
-  SourceContainer,
   // Stories,
   PRIMARY_STORY,
-  CURRENT_SELECTION,
-} from '@storybook/addon-docs';
-import { action } from '@storybook/addon-actions';
-import { Modal } from './Modal';
+} from "@storybook/addon-docs";
+import { action } from "@storybook/addon-actions";
+import { Modal } from "./Modal";
 
 export default {
-  title: 'Example/Modal',
+  title: "Design System/Modal",
   component: Modal,
 };
 
@@ -61,7 +50,7 @@ Basic.args = {
         title="Bisic Example"
         closeHandler={closeHandler}
         submitHandler={() => {
-          closeHandler();
+          // Some submit code
         }}
       >
         Basic Modal Layout
@@ -72,10 +61,10 @@ Basic.args = {
 
 Basic.parameters = {
   docs: {
-    source: { type: 'code' },
+    source: { type: "code" },
     page: () => (
       <>
-        <Title>Basic</Title>
+        <Title>Basic Modal</Title>
         <Subtitle></Subtitle>
         <Description></Description>
         <Primary name="Basic" />
@@ -89,22 +78,43 @@ const TCustom = (args) => {
   const btnStyle = {
     width: 80,
     height: 36,
-    backgroundColor: 'indigo',
-    color: 'white',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    cursor: 'pointer',
+    backgroundColor: "indigo",
+    color: "white",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "pointer",
   };
+
+  const containerStyle = {
+    padding: 20,
+    backgroundColor: "white",
+  };
+
+  const closeStyle = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 80,
+    height: 36,
+    backgroundColor: "#61bd4f",
+    color: "white",
+    marginTop: 20,
+    cursor: "pointer",
+  };
+
   return (
     <Modal
       escape={args.escape}
       disabled={args.disabled}
+      clickOutside={args.clickOutside}
       content={({ closeHandler }) => {
         return (
-          <div>
+          <div style={containerStyle}>
             lorem ipsum dolor sit amet, consectet
-            <Modal.Footer closeHandler={closeHandler} />
+            <div style={closeStyle} onClick={closeHandler}>
+              close
+            </div>
           </div>
         );
       }}
@@ -113,6 +123,7 @@ const TCustom = (args) => {
     </Modal>
   );
 };
+
 export const Custom = TCustom.bind({});
 Custom.args = {
   escape: false,
@@ -136,10 +147,10 @@ Custom.args = {
 
 Custom.parameters = {
   docs: {
-    source: { type: 'code' },
+    source: { type: "code" },
     page: () => (
       <>
-        <Title>Basic</Title>
+        <Title>Custom Modal</Title>
         <Subtitle></Subtitle>
         <Description></Description>
         <Primary name="Custom" />
