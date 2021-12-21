@@ -10,10 +10,21 @@ $ git clone https://github.com/Jack-koh/React-UI-Components.git
 $ cd React-UI-Components
 ```
 
-2️⃣. Story 구성요소
+2️⃣. 모듈 설치 및 실행하기
+
+```sh
+$ npm install
+$ npm run start 또는 yarn start
+```
+
+3️⃣. Story 구성요소
 
 ```sh
 - Button
 - Modal
 - Popover
 ```
+
+4️⃣. ## Preview  
+
+<img src="https://user-images.githubusercontent.com/58971165/146940559-96e89af9-cf56-4ef2-9455-8d9662ef1c23.gif" width="500">
