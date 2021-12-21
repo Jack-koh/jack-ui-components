@@ -1,2 +1,4 @@
-# React-UI-Components
-Storybook 과 함께 재사용 가능한 UI 컴포넌트 및 문서 만들기
+# 🌈 React-UI-Components Story Book
+
+storybook을 이용하여 UI Component 문서화 작업 하기
+storybook 공식사이트: https://storybook.js.org/
