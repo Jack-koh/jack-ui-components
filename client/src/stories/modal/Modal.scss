@@ -1,8 +1,4 @@
-@mixin display-flex($align, $justify) {
-  display: flex;
-  align-items: $align;
-  justify-content: $justify;
-}
+@import "stories/Scss.scss";
 
 // Modal #####################################################################
 #absolute__modal__wrapper {
