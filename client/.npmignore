@@ -1,0 +1,9 @@
+.storybook
+node_modules
+public
+src
+build
+
+.prettierrc
+prepare
+tsconfig.json

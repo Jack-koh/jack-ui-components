@@ -1,0 +1,38 @@
+@import './utils.scss';
+
+.jack__input__container {
+  i.input__pw__lock__icon {
+    @include display-flex(center, center);
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+
+    &.disabled {
+      &::before {
+        background-position: -264px -100px;
+      }
+    }
+
+    &.open {
+      &::before {
+        width: 14px;
+        height: 13px;
+        background: url('/assets/ssr_password_lock_open.svg') no-repeat center;
+      }
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      top: 0;
+      right: 0;
+      width: 10px;
+      height: 12px;
+      background: url('/assets/ssr_password_lock.svg') no-repeat center;
+    }
+  }
+}

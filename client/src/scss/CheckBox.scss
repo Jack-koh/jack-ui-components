@@ -1,0 +1,15 @@
+.jack__checkbox__container {
+  .jack__checkbox {
+    .ssr-checkbox-check-icon {
+      width: 100%;
+      height: 100%;
+      background: url('/assets/check.svg') no-repeat center;
+    }
+
+    .ssr-checkbox-indeterminate-icon {
+      width: 100%;
+      height: 100%;
+      background: url('/assets/indeter.svg') no-repeat center;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+@import './utils.scss';
+
+.jack__pagination {
+  @include display-flex(center, flex-start);
+  height: 36px;
+  margin: 7px 0px;
+
+  .jack__pagination__buttons {
+    @include display-flex(center, center);
+    padding: 4px 12px;
+    border-radius: 3px;
+
+    @mixin page-button {
+      @include display-flex(center, center);
+      height: 28px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.1s;
+    }
+
+    .jack__left__arrow {
+      @include page-button;
+      width: 20px;
+      i {
+        width: 6px;
+        height: 12px;
+        background: url(/assets/pagination_left.svg) no-repeat center;
+      }
+    }
+    .jack__left__arrow__start {
+      @include page-button;
+      width: 20px;
+      i {
+        width: 12px;
+        height: 12px;
+        background: url(/assets/pagination_left_end.svg) no-repeat center;
+      }
+    }
+    .jack__right__arrow {
+      @include page-button;
+      width: 20px;
+      i {
+        width: 6px;
+        height: 12px;
+        background: url(/assets/pagination_right.svg) no-repeat center;
+      }
+    }
+    .jack__right__arrow-end {
+      @include page-button;
+      width: 20px;
+      i {
+        width: 12px;
+        height: 12px;
+        background: url(/assets/pagination_right.svg) no-repeat center;
+      }
+    }
+
+    .jack__page__items {
+      @include display-flex(center, center);
+      margin: 0 6px;
+      .pagination-item {
+        @include page-button;
+        width: 32px;
+        font-size: 13px;
+        color: #c5c6ca;
+        font-weight: 700;
+        margin: 0 2px;
+
+        &.active {
+          color: #191919;
+        }
+      }
+    }
+  }
+}

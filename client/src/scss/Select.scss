@@ -1,0 +1,21 @@
+.jack__select {
+  .jack__select__button {
+    .jack__select__arrow__icon {
+      &::before {
+        content: '';
+        display: block;
+        width: 15px;
+        height: 10px;
+        background: url('/assets/select_arrow.svg') no-repeat center;
+      }
+    }
+
+    &.active {
+      .jack__select__arrow__icon {
+        &::before {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}

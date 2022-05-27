@@ -1,0 +1,44 @@
+@import './utils.scss';
+
+.jack__accordion__section {
+  .jack__accordion_button {
+    &.active {
+      i.accordion__arrow__icon {
+        &::before {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    i.accordion__arrow__icon {
+      @include display-flex(center, center);
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+
+      &::before {
+        content: '';
+        display: block;
+        width: 10px;
+        height: 8px;
+        background-image: url(/assets/accordion_arrow.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      &.button {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .accordion__content {
+    .accordion__item {
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+}

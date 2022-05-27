@@ -1,0 +1,151 @@
+@import './utils.scss';
+
+@mixin label {
+  div.label {
+    max-width: calc(100% - 40px);
+    text-align: center;
+    font-size: 12px;
+
+    .valid-text {
+      text-align: center;
+
+      .blue-text {
+        @include display-flex(center, center);
+        span {
+          display: block;
+          max-width: calc(100% - 30px);
+          font-weight: 700;
+          color: #006dbc;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+
+          &::after {
+            content: '은';
+            font-weight: 400;
+            color: #191919;
+            margin-left: 4px;
+          }
+        }
+      }
+
+      .red-text {
+        @include display-flex(center, center);
+        &:not(.error) {
+          span::after {
+            content: '은';
+            font-weight: 400;
+            color: #191919;
+            margin-left: 4px;
+          }
+        }
+
+        span {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          word-break: break-word;
+          max-width: calc(100% - 30px);
+          width: 100%;
+          font-weight: 700;
+          color: #ff5974;
+        }
+      }
+
+      .normal-text {
+        @include display-flex(initial, center);
+        margin-top: 2px;
+        color: #191919;
+
+        span {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          display: inline-block;
+          max-width: calc(100% - 30px);
+        }
+      }
+    }
+
+    .gray-text {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #a7a7a7;
+    }
+
+    .upload-icon {
+      width: 82px;
+      height: 60px;
+      background: url('/assets/ssr_upload.svg') no-repeat center;
+    }
+
+    .label-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      margin-top: 10px;
+      color: #979797;
+    }
+  }
+}
+
+.jack__drop__zone_wrapper {
+  .drop__zone {
+    @include label;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-width: 300px;
+    min-height: 120px;
+    padding: 4px;
+    overflow: hidden;
+    border: 1px solid #e6e6e6;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+
+    &:hover:not(.loading) {
+      border-color: #9dd6ff;
+    }
+
+    &.active:not(.loading) {
+      background-color: #eef8ff;
+    }
+
+    .file__input {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      input {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        position: absolute;
+        cursor: pointer;
+      }
+
+      .cancel-button {
+        position: absolute;
+        right: 14px;
+        top: 14px;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+
+        &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          background: url('/assets/cancel.svg') no-repeat center;
+        }
+      }
+    }
+  }
+}

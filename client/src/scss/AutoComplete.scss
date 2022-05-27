@@ -1,0 +1,96 @@
+@import './utils.scss';
+
+.jack__autocomplete {
+  .ssr_autocomplete__input__field {
+    width: 100%;
+    height: 100%;
+    .select__arrow__icon {
+      @include display-flex(center, center);
+      width: 22px;
+      height: 22px;
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+
+      i {
+        width: 15px;
+        height: 10px;
+        background: url('/assets/select_arrow.svg') no-repeat center;
+      }
+      &.active {
+        i {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+  .autocomplite__chip__field {
+    &.total {
+      .autocomplete__chip {
+        margin-right: 0;
+        .chip__title {
+          max-width: none;
+        }
+      }
+    }
+    @mixin chip {
+      @include display-flex(center, space-between);
+      padding: 0 6px;
+      height: 100%;
+      font-size: 11px;
+      color: #fff;
+      background-color: #003288;
+    }
+
+    .autocomplete__chip {
+      @include chip;
+      width: 100%;
+      margin-right: 4px;
+
+      .chip__title {
+        max-width: calc(100% - 8px);
+        padding-right: 8px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      i {
+        width: 9px;
+        height: 9px;
+        background: url('/assets/chip_cancel.svg') no-repeat center;
+        cursor: pointer;
+      }
+    }
+
+    .autocomplete__chip__additional {
+      @include chip;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+  }
+
+  .autocomplete__option__container {
+    .autocomplete__all__check {
+      padding: 0 12px;
+      height: 30px;
+      &:hover {
+        background-color: #f5fbff;
+      }
+      .jack__checkbox__container {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .autocomplete__list__grid {
+      position: relative;
+      height: 100%;
+      &.allCheck {
+        height: calc(100% - 30px);
+      }
+    }
+  }
+}

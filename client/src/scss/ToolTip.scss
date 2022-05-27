@@ -1,0 +1,81 @@
+.jack__tooltip__root {
+  position: absolute;
+  z-index: 100;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+@mixin arrow-element {
+  width: 0;
+  height: 0;
+  position: fixed;
+}
+
+.jack__tooltip__arrow {
+  @include arrow-element;
+
+  @mixin left-arrow {
+    border-top: 4px solid transparent !important;
+    border-bottom: 4px solid transparent !important;
+    border-right: 7px solid #333;
+  }
+
+  @mixin right-arrow {
+    border-top: 4px solid transparent !important;
+    border-bottom: 4px solid transparent !important ;
+    border-left: 7px solid #333;
+  }
+
+  @mixin top-arrow {
+    border-left: 4px solid transparent !important;
+    border-right: 4px solid transparent !important;
+    border-bottom: 7px solid #333;
+  }
+
+  @mixin bottom-arrow {
+    border-left: 4px solid transparent !important;
+    border-right: 4px solid transparent !important;
+    border-top: 7px solid #333;
+  }
+
+  &.tooltip-position-right-top {
+    @include left-arrow;
+  }
+  &.tooltip-position-right-bottom {
+    @include left-arrow;
+  }
+  &.tooltip-position-right-center {
+    @include left-arrow;
+  }
+
+  &.tooltip-position-left-top {
+    @include right-arrow;
+  }
+  &.tooltip-position-left-bottom {
+    @include right-arrow;
+  }
+  &.tooltip-position-left-center {
+    @include right-arrow;
+  }
+
+  &.tooltip-position-bottom-left {
+    @include top-arrow;
+  }
+  &.tooltip-position-bottom-right {
+    @include top-arrow;
+  }
+  &.tooltip-position-bottom-center {
+    @include top-arrow;
+  }
+
+  &.tooltip-position-top-left {
+    @include bottom-arrow;
+  }
+  &.tooltip-position-top-right {
+    @include bottom-arrow;
+  }
+  &.tooltip-position-top-center {
+    @include bottom-arrow;
+  }
+}
